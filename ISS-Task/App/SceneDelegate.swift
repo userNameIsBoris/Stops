@@ -24,10 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
 
     let controller = StopsViewController()
+    let navController = UINavigationController(rootViewController: controller)
 
     window = UIWindow(windowScene: windowScene)
-    window?.rootViewController = tabController
-    window?.rootViewController = controller
+    window?.rootViewController = navController
     window?.makeKeyAndVisible()
   }
 }

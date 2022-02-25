@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1CF5AA027C8D7200043BA24 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF5A9F27C8D7200043BA24 /* Stop.swift */; };
+		A1CF5AA327C90DD20043BA24 /* StopsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF5AA227C90DD20043BA24 /* StopsLoader.swift */; };
+		A1CF5AAA27C958210043BA24 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF5AA927C958210043BA24 /* TransportType.swift */; };
 		A1F34C9027C8C1F700203205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F34C8F27C8C1F700203205 /* AppDelegate.swift */; };
 		A1F34C9227C8C1F700203205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F34C9127C8C1F700203205 /* SceneDelegate.swift */; };
 		A1F34C9427C8C1F700203205 /* StopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F34C9327C8C1F700203205 /* StopsViewController.swift */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1CF5A9F27C8D7200043BA24 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		A1CF5AA227C90DD20043BA24 /* StopsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsLoader.swift; sourceTree = "<group>"; };
+		A1CF5AA927C958210043BA24 /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		A1F34C8C27C8C1F700203205 /* ISS-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISS-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F34C8F27C8C1F700203205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1F34C9127C8C1F700203205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +44,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1CF5AA127C8D7230043BA24 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1CF5A9F27C8D7200043BA24 /* Stop.swift */,
+				A1CF5AA927C958210043BA24 /* TransportType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A1CF5AA427C90DF00043BA24 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A1CF5AA227C90DD20043BA24 /* StopsLoader.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		A1F34C8327C8C1F700203205 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +88,8 @@
 				A1F34CAB27C8C68A00203205 /* Localizable.strings */,
 				A1F34CA927C8C4C400203205 /* App */,
 				A1F34C9327C8C1F700203205 /* StopsViewController.swift */,
+				A1CF5AA127C8D7230043BA24 /* Model */,
+				A1CF5AA427C90DF00043BA24 /* Networking */,
 			);
 			path = "ISS-Task";
 			sourceTree = "<group>";
@@ -170,9 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1CF5AAA27C958210043BA24 /* TransportType.swift in Sources */,
 				A1F34C9427C8C1F700203205 /* StopsViewController.swift in Sources */,
 				A1F34C9027C8C1F700203205 /* AppDelegate.swift in Sources */,
+				A1CF5AA027C8D7200043BA24 /* Stop.swift in Sources */,
 				A1F34C9227C8C1F700203205 /* SceneDelegate.swift in Sources */,
+				A1CF5AA327C90DD20043BA24 /* StopsLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
