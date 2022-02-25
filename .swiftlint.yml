@@ -1,0 +1,22 @@
+disabled_rules:
+  - force_cast
+  - force_try
+
+opt_in_rules:
+  - file_header
+  - prohibited_interface_builder
+  - closure_end_indentation
+  - literal_expression_end_indentation
+
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.swift
+                    \/\/  (ISS-Task)
+                    \/\/
+                    \/\/  Created by Boris Ezhov on \d{1,2}\.\d{1,2}\.\d{4}\.
+                    \/\/  Copyright \(c\) \d{4} Boris Ezhov\. All rights reserved\.
+                    \/\/
+
+trailing_comma:
+  mandatory_comma: true
