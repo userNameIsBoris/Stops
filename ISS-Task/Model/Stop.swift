@@ -9,14 +9,21 @@
 import CoreLocation
 
 struct Stop {
-  var id: UUID
+  var id: String
   var name: String
   var transportTypes: [TransportType]
   var coordinate: CLLocationCoordinate2D
+  var routes: [Route]?
+
+  var joinedTransportString: String {
+    return transportTypes
+      .map { $0.localizedString }
+      .joined(separator: " • ")
+  }
 
   // MARK: - Initializers
   init(
-    id: UUID,
+    id: String,
     name: String,
     transportTypes: [TransportType],
     latitude: CLLocationDegrees,
