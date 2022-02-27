@@ -6,6 +6,9 @@
 //  Copyright (c) 2022 Boris Ezhov. All rights reserved.
 //
 
+// AlertPresenter: Alert Title
+"An error has occurred" = "Произошла ошибка";
+
 // TransportType: Localized String
 "Bus stop" = "Автобусная остановка";
 
@@ -17,6 +20,12 @@
 
 // StopsViewController: Title
 "Stops" = "Остановки";
+
+//StopsViewController: Search Bar Placeholder
+"Stop name, transport type..." = "Название остановки, транспорт...";
+
+// StopsViewController: Empty Stops Cell Title
+"There are no appropriate stops :(" = "Нет подходящих остановок :(";
 
 // TransportType: Localized String
 "Train station" = "Железнодорожная станция";
