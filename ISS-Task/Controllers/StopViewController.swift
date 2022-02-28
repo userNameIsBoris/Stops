@@ -105,11 +105,11 @@ final class StopViewController: UIViewController {
     navigationController?.navigationBar.standardAppearance = appearance
     navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
 
-    let cancelButton = UIBarButtonItem(
-      barButtonSystemItem: .cancel,
+    let doneButton = UIBarButtonItem(
+      barButtonSystemItem: .done,
       target: self,
       action: #selector(dismissViewController))
-    navigationItem.rightBarButtonItems = [cancelButton]
+    navigationItem.rightBarButtonItem = doneButton
   }
 
   @objc private func dismissViewController() {
