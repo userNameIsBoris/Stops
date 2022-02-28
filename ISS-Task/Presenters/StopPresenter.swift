@@ -9,7 +9,7 @@
 import Foundation
 
 protocol StopViewPresenter: AnyObject {
-  func loadRoutes()
+  func loadRoutes() async
 }
 
 final class StopPresenter: StopViewPresenter {
@@ -23,13 +23,18 @@ final class StopPresenter: StopViewPresenter {
     self.view = view
     self.stop = stop
     view.configureWithStop(stop)
+    UserDefaults.standard.set(customObject: stop, forKey: "selectedStop")
+  }
+
+  deinit {
+    UserDefaults.standard.removeObject(forKey: "selectedStop")
   }
 
   // MARK: - Methods
-  func loadRoutes() {
-    loader.loadRoutes(ofStop: stop) { [weak self] result in
-      guard let self = self else { return }
+  func loadRoutes() async {
+    let result = await loader.loadRoutes(ofStop: stop)
 
+    DispatchQueue.main.async {
       switch result {
       case .success(let routes):
         self.stop.routes = routes

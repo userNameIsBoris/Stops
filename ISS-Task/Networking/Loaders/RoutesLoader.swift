@@ -8,38 +8,25 @@
 
 import Foundation
 
-final class RoutesLoader {
+struct RoutesLoader {
   private let parser = RoutesParser()
 
   // MARK: - Methods
-  func loadRoutes(ofStop stop: Stop, completion: @escaping (Result<[Route], Error>) -> Void) {
+  func loadRoutes(ofStop stop: Stop) async -> Result<[Route], Error> {
     let endpoint = Endpoints.routes(ofStop: stop)
-    let dataTask = URLSession.shared.dataTask(with: endpoint) { [weak self] data, response, error in
-      guard let self = self else { return }
 
-      do {
-        if let error = error {
-          throw error
-        }
+    do {
+      let (data, response) = try await URLSession.shared.data(from: endpoint)
 
-        guard
-          let httpResponse = response as? HTTPURLResponse,
-          httpResponse.statusCode == 200
-        else { throw URLError(.badServerResponse) }
+      guard
+        let httpResponse = response as? HTTPURLResponse,
+        httpResponse.statusCode == 200
+      else { throw URLError(.badServerResponse) }
 
-        guard let data = data else { throw URLError(.cannotDecodeRawData) }
-
-        let routes = try self.parser.parseRoutes(from: data)
-
-        DispatchQueue.main.async {
-          completion(.success(routes))
-        }
-      } catch {
-        DispatchQueue.main.async {
-          completion(.failure(error))
-        }
-      }
+      let routes = try parser.parseRoutes(from: data)
+      return .success(routes)
+    } catch {
+      return .failure(error)
     }
-    dataTask.resume()
   }
 }

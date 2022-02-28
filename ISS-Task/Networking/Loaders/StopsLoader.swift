@@ -8,37 +8,23 @@
 
 import Foundation
 
-final class StopsLoader {
+struct StopsLoader {
   private let parser = StopsParser()
 
   // MARK: - Methods
-  func loadStops(completion: @escaping (Result<[Stop], Error>) -> Void) {
-    let dataTask = URLSession.shared.dataTask(with: Endpoints.stops) { [weak self] data, response, error in
-      guard let self = self else { return }
+  func loadStops() async -> Result<[Stop], Error> {
+    do {
+      let (data, response) = try await URLSession.shared.data(from: Endpoints.stops)
 
-      do {
-        if let error = error {
-          throw error
-        }
+      guard
+        let httpResponse = response as? HTTPURLResponse,
+        httpResponse.statusCode == 200
+      else { throw URLError(.badServerResponse) }
 
-        guard
-          let httpResponse = response as? HTTPURLResponse,
-          httpResponse.statusCode == 200
-        else { throw URLError(.badServerResponse) }
-
-        guard let data = data else { throw URLError(.cannotDecodeRawData) }
-
-        let stops = try self.parser.parseStops(from: data)
-
-        DispatchQueue.main.async {
-          completion(.success(stops))
-        }
-      } catch {
-        DispatchQueue.main.async {
-          completion(.failure(error))
-        }
-      }
+      let stops = try parser.parseStops(from: data)
+      return .success(stops)
+    } catch {
+      return .failure(error)
     }
-    dataTask.resume()
   }
 }

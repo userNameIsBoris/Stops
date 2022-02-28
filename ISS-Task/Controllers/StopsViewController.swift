@@ -56,7 +56,7 @@ final class StopsViewController: UITableViewController {
 
   @objc private func loadStops() {
     tableView.refreshControl?.beginRefreshing()
-    presenter.loadStops()
+    Task { await presenter.loadStops() }
   }
 
   private func presentStopVC(selectedStop: Stop) {

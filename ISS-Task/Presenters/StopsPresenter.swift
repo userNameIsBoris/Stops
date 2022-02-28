@@ -9,15 +9,17 @@
 import Foundation
 
 protocol StopsViewPresenter: AnyObject {
+  var stopToPresent: Stop? { get }
   var filteredStops: [Stop] { get }
   var areStopsLoaded: Bool { get }
 
-  func loadStops()
+  func loadStops() async
   func filterStops(searchText: String)
   func resetFilter()
 }
 
 final class StopsPresenter: StopsViewPresenter {
+  var stopToPresent: Stop?
   var filteredStops: [Stop] = []
   var areStopsLoaded = false
 
@@ -34,10 +36,10 @@ final class StopsPresenter: StopsViewPresenter {
   }
 
   // MARK: - Methods
-  func loadStops() {
-    loader.loadStops { [weak self] result in
-      guard let self = self else { return }
+  func loadStops() async {
+    let result = await loader.loadStops()
 
+    DispatchQueue.main.async {
       switch result {
       case .success(let stops):
         self.stops = stops

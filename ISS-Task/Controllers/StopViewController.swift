@@ -118,7 +118,7 @@ final class StopViewController: UIViewController {
 
   private func loadRoutes() {
     activityIndicator.startAnimating()
-    presenter.loadRoutes()
+    Task { await presenter.loadRoutes() }
   }
 }
 
