@@ -34,3 +34,5 @@ enum TransportType: String {
     }
   }
 }
+
+extension TransportType: Codable {}

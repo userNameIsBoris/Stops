@@ -24,7 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
 
     let controller = StopsViewController()
+    let presenter = StopsPresenter(view: controller)
+    controller.presenter = presenter
     let navController = UINavigationController(rootViewController: controller)
+
+    let stopToPresent = UserDefaults.standard.customObject(Stop.self, forKey: "selectedStop")
+    presenter.stopToPresent = stopToPresent
 
     window = UIWindow(windowScene: windowScene)
     window?.rootViewController = navController

@@ -34,6 +34,9 @@ final class StopsViewController: UITableViewController {
     super.viewDidLoad()
     title = NSLocalizedString("Stops", comment: "StopsViewController: Title")
     setupView()
+
+    guard let stop = presenter.stopToPresent else { return }
+    presentStopVC(selectedStop: stop)
   }
 
   override func viewWillAppear(_ animated: Bool) {
