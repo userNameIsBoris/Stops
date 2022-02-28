@@ -1,7 +1,3 @@
-disabled_rules:
-  - force_cast
-  - force_try
-
 opt_in_rules:
   - file_header
   - prohibited_interface_builder
